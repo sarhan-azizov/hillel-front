@@ -15,7 +15,7 @@ import {
   SIGN_IN_PATH,
   SIGN_IN_LABEL,
   SIGN_UP_LABEL,
-} from "../routes";
+} from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   root: {

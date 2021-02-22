@@ -1,0 +1,14 @@
+@import "../../../../styles/_variables.scss";
+
+html, body, :global(#root) {
+  height: 100%;
+}
+
+.authorizationLayout {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  background-color: $c-gainsboro;
+}

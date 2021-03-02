@@ -5,10 +5,14 @@
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
+    "@types/js-cookie": "^2.2.6",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/node": "^12.19.15",
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
     "classnames": "^2.2.6",
+    "js-cookie": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
     "node-sass": "^4.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -28,7 +32,10 @@
     "extends": [
       "react-app",
       "plugin:react-hooks/recommended"
-    ]
+    ],
+    "rules": {
+      "object-curly-spacing": ["error", "always"]
+    }
   },
   "browserslist": {
     "production": [

@@ -10,12 +10,7 @@ import { Menu as MenuIcon } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link as RouterLink } from "react-router-dom";
 
-import {
-  SIGN_UP_PATH,
-  SIGN_IN_PATH,
-  SIGN_IN_LABEL,
-  SIGN_UP_LABEL,
-} from "../constants";
+import { ROUTES } from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,11 +47,11 @@ const Navbar = ({ children }: { children: ReactNode }) => {
           <Typography variant="h6" className={classes.title}>
             Hillel
           </Typography>
-          <Button color="inherit" component={RouterLink} to={SIGN_IN_PATH}>
-            {SIGN_IN_LABEL}
+          <Button color="inherit" component={RouterLink} to={ROUTES.AUTHORIZATION}>
+            SIGN IN
           </Button>
-          <Button color="inherit" component={RouterLink} to={SIGN_UP_PATH}>
-            {SIGN_UP_LABEL}
+          <Button color="inherit" component={RouterLink} to={ROUTES.REGISTRATION}>
+            SIGN UP
           </Button>
         </Toolbar>
       </AppBar>

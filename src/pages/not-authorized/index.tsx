@@ -1,0 +1,1 @@
+export { NotAuthorizedPage } from './not-authorized.page';

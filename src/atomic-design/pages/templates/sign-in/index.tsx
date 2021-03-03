@@ -1,0 +1,1 @@
+export { SignInTemplate } from './sign-in.template';

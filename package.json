@@ -5,14 +5,23 @@
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@types/js-cookie": "^2.2.6",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/node": "^12.19.15",
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
+    "classnames": "^2.2.6",
+    "js-cookie": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "node-sass": "^4.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-hook-form": "^6.15.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.3",
+    "use-http": "^1.0.16"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,8 +31,15 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app"
-    ]
+      "react-app",
+      "plugin:react-hooks/recommended"
+    ],
+    "rules": {
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -38,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.11",
     "@types/react-router-dom": "^5.1.7"
   }
 }

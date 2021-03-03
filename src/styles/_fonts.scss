@@ -1,0 +1,19 @@
+$ff-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+sans-serif;
+
+$ff-source-code: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+// Todo replace px to em
+$fs-micro:      10px;
+$fs-mini:       11px;
+$fs-tiny:       12px;
+$fs-small:      13px;
+$fs-medium:     14px;
+$fs-large:      15px;
+$fs-big:        16px;
+$fs-huge:       17px;
+$fs-massive:    18px;
+$fs-banner:     21px;
+
+$fs-base: $fs-big !default;

@@ -5,9 +5,9 @@ import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import { Provider } from 'use-http';
 
 import "./styles/main.scss";
-import { customTheme } from './theme';
 import AppRoutes from "./routes";
-import { WithCurrentUser } from "./context";
+import { customTheme } from './styles/theme';
+import { WithCurrentUser } from "./atomic-design/atoms";
 
 import { HTTP_HOST, HTTP_OPTIONS } from './configs';
 

@@ -1,1 +1,1 @@
-export { BaseTemplate } from './base-template';
+export { BaseTemplate } from './base.template';

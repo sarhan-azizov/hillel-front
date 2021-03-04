@@ -32,7 +32,7 @@ const SignInFormComponent = (props: TypeSignInComponentAPI) => (
             required
             fullWidth
             label="Username"
-            name="username"
+            name="login"
             autoFocus
             inputRef={props.form.register(validation.username)}
         />

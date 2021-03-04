@@ -4,7 +4,7 @@ import styles from './base-template.module.scss';
 import { Box, Container, Typography } from "@material-ui/core";
 
 
-const BaseTemplate = (props: any) => {
+const BoardTemplate = (props: any) => {
   return (
     <div className={styles.wrapper}>
       <Container component="main" maxWidth="sm" classes={ { root: styles.main } }>
@@ -21,4 +21,4 @@ const BaseTemplate = (props: any) => {
   );
 };
 
-export { BaseTemplate };
+export { BoardTemplate };

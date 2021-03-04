@@ -10,7 +10,7 @@ import { Menu as MenuIcon } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link as RouterLink } from "react-router-dom";
 
-import { ROUTES } from "../../configs/constants";
+import { ROUTES } from "../../configs";
 
 const useStyles = makeStyles((theme) => ({
   root: {

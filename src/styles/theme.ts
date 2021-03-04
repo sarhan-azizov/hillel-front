@@ -10,7 +10,7 @@ export const customTheme = responsiveFontSizes(createMuiTheme({
             dark: '#2053d2',
         },
         text: {
-            primary: '#376aed'
+            primary: '#000'
         }
     },
 }));

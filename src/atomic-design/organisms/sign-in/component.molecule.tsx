@@ -6,11 +6,12 @@ import { Alert } from '@material-ui/lab';
 
 import styles from './component.module.scss';
 
+import { TypeSignInComponentAPI } from './types';
 import { TextField } from '../../atoms';
 import { ROUTES } from "../../../configs";
 import { validation } from './validation';
 
-const SignInFormComponent = (props: any) => (
+const SignInFormComponent = (props: TypeSignInComponentAPI) => (
     <Fragment>
         <Container component="main" maxWidth="sm" classes={ { root: styles.root } }>
             <form onSubmit={props.form.handleSubmit(props.onSubmit)} onChange={props.onChange} noValidate autoComplete="off" className={styles.form}>
@@ -55,6 +56,7 @@ const SignInFormComponent = (props: any) => (
                 <Button
                     type="submit"
                     fullWidth
+                    disabled={props.isSubmitting}
                     variant="contained"
                     color="primary"
                 >

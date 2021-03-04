@@ -12,9 +12,6 @@ export const HTTP_OPTIONS = {
     }
 };
 
-
-export type TypeHttpGet = (route?: string) => Promise<any>;
-
 export type HTTP_RESPONSE = {
     loading: boolean;
     data?:any;

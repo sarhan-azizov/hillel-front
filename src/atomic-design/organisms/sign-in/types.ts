@@ -1,5 +1,6 @@
+import { ReqMethods } from "use-http";
+
 import { CurrentUserContextType } from "../../atoms/with-current-user";
-import { TypeHttpGet } from "../../../configs";
 
 export type TypeUserSignInFormFields = {
     login: string;
@@ -7,7 +8,7 @@ export type TypeUserSignInFormFields = {
 }
 
 export type SubmitSignInFormType = {
-    get: TypeHttpGet;
+    http: ReqMethods;
     currentUserCtx: CurrentUserContextType;
     formData: TypeUserSignInFormFields;
     form: any;

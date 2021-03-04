@@ -12,7 +12,7 @@ const GuardedRoute = ({ component: Component, isAuthorize, ...props }: RouteProp
   const render = (componentProps:any) => (
       isAuthorize === undefined || Boolean(currentUser.user.username) === isAuthorize
           ? <Component {...componentProps} />
-          : <Redirect to={ROUTES.AUTHORIZATION} />
+          : <Redirect to={ROUTES.SIGN_IN} />
   )
 
   return (

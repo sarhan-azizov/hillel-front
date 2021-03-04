@@ -47,10 +47,10 @@ const Navbar = ({ children }: { children: ReactNode }) => {
           <Typography variant="h6" className={classes.title}>
             Hillel
           </Typography>
-          <Button color="inherit" component={RouterLink} to={ROUTES.AUTHORIZATION}>
+          <Button color="inherit" component={RouterLink} to={ROUTES.SIGN_IN}>
             SIGN IN
           </Button>
-          <Button color="inherit" component={RouterLink} to={ROUTES.REGISTRATION}>
+          <Button color="inherit" component={RouterLink} to={ROUTES.SIGN_UP}>
             SIGN UP
           </Button>
         </Toolbar>

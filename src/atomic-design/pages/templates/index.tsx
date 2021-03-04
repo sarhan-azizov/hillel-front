@@ -1,1 +1,1 @@
-export { SignInTemplate } from "./sign-in";
+export { AuthorizationTemplate } from "./authorization";

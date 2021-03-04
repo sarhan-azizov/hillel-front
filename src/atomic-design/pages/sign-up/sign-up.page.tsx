@@ -1,5 +1,13 @@
-const SignUpPage = () => {
-  return <h1 style={{ marginTop: "64px" }}>Signup</h1>;
-};
+import React from "react";
+
+import { AuthorizationTemplate } from '../templates'
+import { SignUpForm } from '../../organisms';
+
+
+const SignUpPage = () => (
+    <AuthorizationTemplate>
+      <SignUpForm />
+    </AuthorizationTemplate>
+);
 
 export { SignUpPage };

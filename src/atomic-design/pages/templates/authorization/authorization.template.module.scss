@@ -4,11 +4,17 @@ html, body, :global(#root) {
   height: 100%;
 }
 
-.signInLayout {
+.wrapper {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   min-height: 100%;
   background-color: $c-gainsboro;
+}
+
+.root {
+  background-color: $c-white;
+  border-radius: 20px;
+  box-shadow: 0 2px 3px $c-silver-chalice;
 }

@@ -1,6 +1,6 @@
 // TODO temporarily solution
 export const validation = {
-    login: {
+    username: {
         required: {
             value: true,
             message: 'The field is required'

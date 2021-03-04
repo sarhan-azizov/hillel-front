@@ -1,0 +1,22 @@
+@import "../../../../styles/variables";
+
+div.icon {
+  background-color: $c-green-pantone;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2rem;
+
+  :global {
+    .MuiSvgIcon-root {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  align-items: center;
+}

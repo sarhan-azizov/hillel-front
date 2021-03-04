@@ -7,8 +7,8 @@ import { HomePage, SignUpPage, SignInPage, NotFoundPage, UnauthorizedPage, Guard
 
 const Routes = () => (
     <Switch>
-        <Route path={ROUTES.AUTHORIZATION} render={SignInPage} />
-        <Route path={ROUTES.REGISTRATION}>
+        <Route path={ROUTES.SIGN_IN} render={SignInPage} />
+        <Route path={ROUTES.SIGN_UP}>
             <SignUpPage />
         </Route>
         <Route path={ROUTES.NOT_AUTHORIZED}>

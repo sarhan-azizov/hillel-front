@@ -51,6 +51,6 @@ export const validation = {
         }
     },
     confirmPassword: (watch: any) => ({
-        validate: (value: any) => value !== watch('password') ? 'Password mismatch': true
+        validate: (value: any) => (value === '' || value !== watch('password')) ? 'Password mismatch': true
     })
 }

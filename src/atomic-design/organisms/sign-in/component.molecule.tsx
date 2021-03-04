@@ -49,10 +49,6 @@ const SignInFormComponent = (props: TypeSignInComponentAPI) => (
                 type="password"
                 inputRef={props.form.register(validation.password)}
             />
-            {/*<FormControlLabel*/}
-            {/*    control={<Checkbox value="remember" color="primary" />}*/}
-            {/*    label="Remember me"*/}
-            {/*/>*/}
             {props.form.errors.form && <Alert severity="error">{props.form.errors.form?.message}</Alert>}
             <Box mt={1}>
                 <Button

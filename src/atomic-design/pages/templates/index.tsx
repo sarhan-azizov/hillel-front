@@ -1,1 +1,1 @@
-export { AuthorizationTemplate } from "./authorization";
+export { BaseTemplate } from "./base";

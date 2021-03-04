@@ -2,21 +2,21 @@
 
 div.icon {
   background-color: $c-cerulean-blue;
+  width: 80px;
+  height: 80px;
+
+  :global {
+    .MuiSvgIcon-root {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-}
-
-.iconContainer {
+.root {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   align-items: center;
-}
-
-.footer {
-  margin-top: 20px;
+  text-align: center;
 }

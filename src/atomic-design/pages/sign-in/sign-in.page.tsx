@@ -1,13 +1,13 @@
 import React from "react";
 
-import { AuthorizationTemplate } from '../templates'
+import { BaseTemplate } from '../templates'
 import { SignInForm } from '../../organisms';
 
 
 const SignInPage = () => (
-    <AuthorizationTemplate>
+    <BaseTemplate>
         <SignInForm />
-    </AuthorizationTemplate>
+    </BaseTemplate>
 );
 
 export { SignInPage };

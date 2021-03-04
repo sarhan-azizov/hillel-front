@@ -13,8 +13,12 @@ html, body, :global(#root) {
   background-color: $c-gainsboro;
 }
 
-.root {
+main.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   background-color: $c-white;
   border-radius: 20px;
   box-shadow: 0 2px 3px $c-silver-chalice;
+  padding: 40px 0;
 }

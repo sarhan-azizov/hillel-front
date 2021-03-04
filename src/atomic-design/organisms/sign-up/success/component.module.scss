@@ -2,9 +2,9 @@
 
 div.icon {
   background-color: $c-green-pantone;
-    width: 80px;
-    height: 80px;
-    margin-bottom: 2rem;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 2rem;
 
   :global {
     .MuiSvgIcon-root {
@@ -17,6 +17,5 @@ div.icon {
 .iconContainer {
   display: flex;
   flex-direction: column;
-  margin: 20px auto;
   align-items: center;
 }

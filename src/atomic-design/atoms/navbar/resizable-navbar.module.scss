@@ -8,6 +8,10 @@
       border: none;
     }
 
+    .MuiTypography-root {
+      white-space: nowrap;
+    }
+
     .MuiListItem-root {
       border-left: 2px solid $c-cerulean-blue;
     }

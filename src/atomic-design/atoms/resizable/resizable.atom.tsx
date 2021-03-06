@@ -23,13 +23,11 @@ const useResizable = (params: TypeNavbarParams): TypeNavbarReturn => {
     const [width, setWidth] = useState(params.defaultWidth);
 
     const handleMouseDown = () => {
-        console.log('subscribe')
         document.addEventListener("mouseup", handleMouseUp, true);
         document.addEventListener("mousemove", handleMouseMove, true);
     };
 
     const handleMouseUp = () => {
-        console.log('unsubscribe')
         document.removeEventListener("mouseup", handleMouseUp, true);
         document.removeEventListener("mousemove", handleMouseMove, true);
     };

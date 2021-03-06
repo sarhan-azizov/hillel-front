@@ -1,0 +1,24 @@
+@import "../../../../styles/variables";
+
+html, body, :global(#root) {
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  background-color: $c-gainsboro;
+}
+
+main.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: $c-white;
+  border-radius: 20px;
+  box-shadow: 0 2px 3px $c-silver-chalice;
+  padding: 40px 0;
+}

@@ -1,0 +1,17 @@
+@import "../../../styles/variables";
+
+.root {
+  height: 100%;
+  position: relative;
+}
+
+.resizable {
+  width: 5px;
+  cursor: ew-resize;
+  padding: 4px 0 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}

@@ -1,0 +1,40 @@
+@import "../../../styles/variables";
+
+.root {
+  height: 100%;
+
+  :global {
+    .MuiDrawer-paperAnchorDockedLeft {
+      border: none;
+    }
+
+    .MuiListItem-root {
+      border-left: 2px solid $c-cerulean-blue;
+    }
+
+    .MuiDrawer-paper {
+      position: static;
+      background-color: $c-gunmetal;
+      color: $c-manatee;
+    }
+
+    .MuiListItemIcon-root {
+      color: $c-manatee;
+      min-width: 33px;
+    }
+
+    .MuiListItem-button:hover {
+      background-color: $c-cerulean-blue;
+      color: $c-white;
+
+      .MuiListItemIcon-root {
+        color: $c-white;
+      }
+    }
+  }
+}
+
+.navbar {
+  width: 100%;
+  height: 100%;
+}

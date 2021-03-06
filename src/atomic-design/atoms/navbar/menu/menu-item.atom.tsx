@@ -1,17 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles, createStyles } from '@material-ui/core/styles'
-// import { SvgIconProps } from '@material-ui/core/SvgIcon'
 
 import List from '@material-ui/core/List'
-
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Divider from '@material-ui/core/Divider'
 import Collapse from '@material-ui/core/Collapse'
 
-import IconExpandLess from '@material-ui/icons/ExpandLess'
-import IconExpandMore from '@material-ui/icons/ExpandMore'
+import { ChevronRight, ExpandMore } from '@material-ui/icons';
 
 import AppMenuItemComponent from './menu-item-component.atom'
 
@@ -35,7 +31,6 @@ export type AppMenuItemProps = AppMenuItemPropsWithoutItems & {
 
 const AppMenuItem: React.FC<AppMenuItemProps> = props => {
     const { name, link, Icon, items = [] } = props
-    const classes = useStyles()
     const isExpandable = items && items.length > 0
     const [open, setOpen] = React.useState(false)
 
@@ -44,17 +39,17 @@ const AppMenuItem: React.FC<AppMenuItemProps> = props => {
     }
 
     const MenuItemRoot = (
-        <AppMenuItemComponent className={classes.menuItem} link={link} onClick={handleClick}>
+        <AppMenuItemComponent  link={link} onClick={handleClick}>
             {/* Display an icon if any */}
             {!!Icon && (
-                <ListItemIcon className={classes.menuItemIcon}>
+                <ListItemIcon >
                     <Icon />
                 </ListItemIcon>
             )}
             <ListItemText primary={name} inset={!Icon} />
             {/* Display the expand menu if the item has children */}
-            {isExpandable && !open && <IconExpandMore />}
-            {isExpandable && open && <IconExpandLess />}
+            {isExpandable && !open && <ChevronRight />}
+            {isExpandable && open && <ExpandMore />}
         </AppMenuItemComponent>
     )
 
@@ -77,20 +72,5 @@ const AppMenuItem: React.FC<AppMenuItemProps> = props => {
     )
 }
 
-const useStyles = makeStyles(theme =>
-    createStyles({
-        menuItem: {
-            '&.active': {
-                background: 'rgba(0, 0, 0, 0.08)',
-                '& .MuiListItemIcon-root': {
-                    color: '#fff',
-                },
-            },
-        },
-        menuItemIcon: {
-            color: '#97c05c',
-        },
-    }),
-)
 
 export default AppMenuItem

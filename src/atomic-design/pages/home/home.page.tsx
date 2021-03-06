@@ -1,11 +1,11 @@
 import { BoardTemplate } from '../templates';
 
-import { CustomDrawer } from '../../atoms'
+import { ResizableNavbar } from '../../atoms'
 
 const HomePage = () => {
   return (
       <BoardTemplate>
-        <CustomDrawer />
+        <ResizableNavbar />
       </BoardTemplate>
   );
 };

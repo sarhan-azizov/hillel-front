@@ -2,6 +2,7 @@
 
 .root {
   height: 100%;
+  border-left: 2px solid $c-cerulean-blue;
 
   :global {
     .MuiDrawer-paperAnchorDockedLeft {
@@ -10,10 +11,6 @@
 
     .MuiTypography-root {
       white-space: nowrap;
-    }
-
-    .MuiListItem-root {
-      border-left: 2px solid $c-cerulean-blue;
     }
 
     .MuiDrawer-paper {
@@ -34,6 +31,50 @@
       .MuiListItemIcon-root {
         color: $c-white;
       }
+    }
+
+  }
+}
+
+.username {
+  color: $c-white;
+  cursor: pointer;
+
+  &:hover {
+    color: $c-cerulean-blue;
+  }
+  :global {
+    .MuiSvgIcon-root {
+      position: relative;
+      top: 5px;
+    }
+  }
+}
+
+.user {
+  div.icon {
+    background-color: $c-cerulean-blue;
+
+    :global {
+      .MuiSvgIcon-root {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+
+  :global {
+    .MuiAvatar-root {
+      margin: 15px 12px;
+    }
+  }
+}
+
+.userMenu {
+  :global {
+    .MuiPaper-root {
+      margin-top: 25px;
+      width: 170px;
     }
   }
 }

@@ -1,7 +1,7 @@
 import * as JWT from "jsonwebtoken";
 import cookie from "js-cookie";
 
-import { UserType } from "../atomic-design/atoms/with-current-user/types";
+import { UserType } from "../atomic-design/atoms/with-current-user";
 
 export const getUserFromToken = ({ token }: { token: string }): any => {
     const bearerToken = token.replace('Bearer ', '')
@@ -9,8 +9,12 @@ export const getUserFromToken = ({ token }: { token: string }): any => {
     return JWT.decode(bearerToken);
 }
 
+export const getTokenFromCookie = () => cookie.get('Authorization') || '';
+
+export const removeTokenFromCookie = () => cookie.remove('Authorization');
+
 export const getUserFromCookie = (user: UserType): any => {
-    const token = cookie.get('Authorization') || '';
+    const token = getTokenFromCookie();
 
     return token ? getUserFromToken({ token }) : user;
 };

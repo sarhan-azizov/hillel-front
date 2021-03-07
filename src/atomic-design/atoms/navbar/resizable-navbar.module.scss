@@ -1,0 +1,85 @@
+@import "../../../styles/variables";
+
+.root {
+  height: 100%;
+  border-left: 2px solid $c-cerulean-blue;
+
+  :global {
+    .MuiDrawer-paperAnchorDockedLeft {
+      border: none;
+    }
+
+    .MuiTypography-root {
+      white-space: nowrap;
+    }
+
+    .MuiDrawer-paper {
+      position: static;
+      background-color: $c-gunmetal;
+      color: $c-manatee;
+    }
+
+    .MuiListItemIcon-root {
+      color: $c-manatee;
+      min-width: 33px;
+    }
+
+    .MuiListItem-button:hover {
+      background-color: $c-cerulean-blue;
+      color: $c-white;
+
+      .MuiListItemIcon-root {
+        color: $c-white;
+      }
+    }
+
+  }
+}
+
+.username {
+  color: $c-white;
+  cursor: pointer;
+
+  &:hover {
+    color: $c-cerulean-blue;
+  }
+  :global {
+    .MuiSvgIcon-root {
+      position: relative;
+      top: 5px;
+    }
+  }
+}
+
+.user {
+  div.icon {
+    background-color: $c-cerulean-blue;
+
+    :global {
+      .MuiSvgIcon-root {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+
+  :global {
+    .MuiAvatar-root {
+      margin: 15px 12px;
+    }
+  }
+}
+
+.userMenu {
+  :global {
+    .MuiPaper-root {
+      margin-top: 25px;
+      width: 170px;
+    }
+  }
+}
+
+.navbar {
+  width: 100%;
+  height: 100%;
+}

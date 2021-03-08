@@ -13,7 +13,7 @@ import { SubmitSignInFormType, TypeUserSignInFormFields } from './types';
 const authorize = async({ http, formData }: { http: ReqMethods, formData: TypeUserSignInFormFields }) => {
     const params = decodeURIComponent(`username=${formData.login}&password=${formData.password}`);
 
-    return await http.get(`/users/authorization?${params}`);
+    return await http.get(`/auth?${params}`);
 }
 
 const onSubmit = async ({ http, currentUserCtx, formData, form, setLoading }: SubmitSignInFormType) => {

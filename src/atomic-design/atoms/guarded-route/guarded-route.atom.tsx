@@ -8,12 +8,16 @@ import { ROUTES } from '../../../configs';
 
 const GuardedRoute = ({ component: Component, isAuthorize, ...props }: RouteProps & { isAuthorize: boolean, component: any }): JSX.Element => {
   const currentUser: CurrentUserContextType = useContext(CurrentUserContext);
+  const authorized = Boolean(currentUser.user.username) && isAuthorize;
+  const unauthorized = !Boolean(currentUser.user.username);
 
-  const render = (componentProps:any) => (
-      isAuthorize === undefined || Boolean(currentUser.user.username) === isAuthorize
-          ? <Component {...componentProps} />
-          : <Redirect to={ROUTES.SIGN_IN} />
-  )
+  const render = (componentProps:any) => {
+    if (isAuthorize === undefined || authorized || (unauthorized && !isAuthorize)) {
+      return <Component {...componentProps} />;
+    } else if (unauthorized) {
+      return <Redirect to={ROUTES.NOT_AUTHORIZED} />
+    }
+  }
 
   return (
       <Route {...props} render={render} />

@@ -36,9 +36,14 @@
   }
 }
 
+.role {
+  text-transform: capitalize;
+}
+
 .username {
   color: $c-white;
   cursor: pointer;
+  text-transform: capitalize;
 
   &:hover {
     color: $c-cerulean-blue;

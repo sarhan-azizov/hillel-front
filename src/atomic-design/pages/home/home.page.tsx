@@ -1,12 +1,9 @@
 import { BoardTemplate } from '../templates';
-
-import { ResizableNavbar } from '../../atoms'
+import React from "react";
 
 const HomePage = () => {
   return (
-      <BoardTemplate>
-        <ResizableNavbar />
-      </BoardTemplate>
+      <BoardTemplate title="Home Page" />
   );
 };
 

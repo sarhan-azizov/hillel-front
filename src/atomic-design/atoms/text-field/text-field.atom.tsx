@@ -19,6 +19,8 @@ const TextField = (props: TextFieldProps): JSX.Element => {
           InputProps={{
               readOnly: true
           }}
+          value={props.value}
+          disabled={props.disabled}
           margin={props.margin}
           variant={props.variant}
           required={props.required}

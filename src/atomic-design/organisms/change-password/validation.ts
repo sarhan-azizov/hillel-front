@@ -1,18 +1,4 @@
 export const validation = {
-    username: {
-        required: {
-            value: true,
-            message: 'The field is required'
-        },
-        minLength: {
-            value: 3,
-            message: "The field shouldn't be less then 3"
-        },
-        maxLength: {
-            value: 80,
-            message: "The field shouldn't be more then 80"
-        }
-    },
     password: {
         required: {
             value: true,
@@ -26,5 +12,8 @@ export const validation = {
             value: 80,
             message: "The field shouldn't be more then 80"
         }
-    }
+    },
+    confirmPassword: (watch: any) => ({
+        validate: (value: any) => (value === '' || value !== watch('password')) ? 'Password mismatch': true
+    })
 }

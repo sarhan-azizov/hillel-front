@@ -1,4 +1,3 @@
-// TODO temporarily solution
 const nameValidationRules = {
     required: {
         value: true,

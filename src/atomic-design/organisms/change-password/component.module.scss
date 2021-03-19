@@ -1,0 +1,22 @@
+@import "../../../styles/variables";
+
+div.icon {
+  background-color: $c-cerulean-blue;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.footer {
+  margin-top: 20px;
+}

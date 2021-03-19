@@ -1,22 +1,22 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import useFetch, { ReqMethods } from "use-http";
-import { Redirect } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
-import { ROUTES } from "../../../configs";
 import { CurrentUserContext, CurrentUserContextType } from "../../atoms/with-current-user";
 import { getUserFromToken } from '../../../helpers';
 import { SignInFormComponent } from './component.molecule';
 import { SubmitSignInFormType, TypeUserSignInFormFields } from './types';
+import { ROUTES } from "../../../configs";
 
 
 const authorize = async({ http, formData }: { http: ReqMethods, formData: TypeUserSignInFormFields }) => {
     const params = decodeURIComponent(`username=${formData.login}&password=${formData.password}`);
 
-    return await http.get(`/users/authorization?${params}`);
+    return await http.get(`/auth?${params}`);
 }
 
-const onSubmit = async ({ http, currentUserCtx, formData, form, setLoading }: SubmitSignInFormType) => {
+const onSubmit = async ({ http, currentUserCtx, history, formData, form, setLoading }: SubmitSignInFormType) => {
     setLoading(true);
 
     const signInResponse = await authorize({ http, formData });
@@ -25,6 +25,7 @@ const onSubmit = async ({ http, currentUserCtx, formData, form, setLoading }: Su
 
     if(!signInResponse.error) {
         currentUserCtx.changeContext(getUserFromToken(signInResponse));
+        history.push(ROUTES.HOME);
     } else {
         form.setError('form', signInResponse);
     }
@@ -33,16 +34,15 @@ const onSubmit = async ({ http, currentUserCtx, formData, form, setLoading }: Su
 const SignInFormContainer = () => {
     const form = useForm();
     const http = useFetch();
+    const history = useHistory();
     const [loading, setLoading ] = useState(false);
     const currentUserCtx: CurrentUserContextType = useContext(CurrentUserContext);
     const handleSubmit = (formData: TypeUserSignInFormFields) => onSubmit({
-        http, currentUserCtx, formData, form, setLoading
+        http, currentUserCtx, history, formData, form, setLoading
     });
     const handleChange = () => form.clearErrors('form');
 
-    return currentUserCtx.user.username
-        ? <Redirect to={ROUTES.HOME} />
-        : <SignInFormComponent form={form} onSubmit={handleSubmit} onChange={handleChange} isSubmitting={loading} />;
+    return <SignInFormComponent form={form} onSubmit={handleSubmit} onChange={handleChange} isSubmitting={loading} />;
 };
 
 export { SignInFormContainer };

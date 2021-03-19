@@ -1,0 +1,1 @@
+export { ChangePasswordFormContainer as ChangePasswordForm } from './container.molecule';

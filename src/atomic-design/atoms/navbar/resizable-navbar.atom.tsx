@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Menu, MenuItem, Grid, Drawer, Divider, Avatar, Typography } from "@material-ui/core";
 import { ExpandMore, AccountCircle } from "@material-ui/icons";
 import styles from "./resizable-navbar.module.scss";
+import { useHistory } from "react-router-dom";
 
 import AppMenu from './menu/menu.atom'
 import { Resizable } from '../resizable';
 import { removeTokenFromCookie } from '../../../helpers';
+import { CurrentUserContext } from '../../../atomic-design';
+import { ROUTES } from "../../../configs";
 
 export const defaultNavbarWidth = 340;
 const minNavbarWidth = 50;
@@ -14,6 +17,9 @@ const maxNavbarWidth = 1000;
 
 const MemoizedNavbar = React.memo(() => {
     const [anchorEl, setAnchorEl] = useState(null);
+    const userContext = useContext(CurrentUserContext);
+
+    const history = useHistory();
 
     const handleClick = (event:any) => {
         setAnchorEl(event.currentTarget);
@@ -23,10 +29,15 @@ const MemoizedNavbar = React.memo(() => {
         setAnchorEl(null);
     };
 
+    const handleChangePassword = () => {
+        handleClose();
+        history.push(ROUTES.CHANGE_PASSWORD);
+    }
+
     const handleLogout = async () => {
         removeTokenFromCookie();
         handleClose();
-        window.location.reload()
+        history.push(ROUTES.SIGN_IN);
     }
 
     return (
@@ -43,7 +54,7 @@ const MemoizedNavbar = React.memo(() => {
                 </Grid>
                 <Grid item xs={7}>
                     <Typography component="span" variant="body1" onClick={handleClick} className={styles.username}>
-                        Admin Admin <ExpandMore />
+                        {userContext.user.username} <ExpandMore />
                     </Typography>
                     <Menu
                         anchorEl={anchorEl}
@@ -53,11 +64,11 @@ const MemoizedNavbar = React.memo(() => {
                         className={styles.userMenu}
                     >
                         <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleClose}>Change Password</MenuItem>
+                        <MenuItem onClick={handleChangePassword}>Change Password</MenuItem>
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
                     </Menu>
                     <Typography variant="body2">
-                        role: Manager
+                        role: <span className={styles.role}>{userContext.user.role}</span>
                     </Typography>
                 </Grid>
             </Grid>

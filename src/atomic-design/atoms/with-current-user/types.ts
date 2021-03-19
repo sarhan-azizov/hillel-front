@@ -5,5 +5,5 @@ export type UserType = {
 
 export type CurrentUserContextType = {
     changeContext(user: UserType): void;
-    user: any;
+    user: UserType;
 }

@@ -9,7 +9,7 @@ import { SubmitSignUpFormType, TypeUserSignUpFormFields, TypeUserSignUpRequest, 
 
 
 const signUp = async({ http, signUpData }: { http: ReqMethods, signUpData: TypeUserSignUpRequest }) =>
-    await http.post(`/users/registration`, signUpData)
+    await http.post(`/registration`, signUpData)
 
 const onSubmit = async ({ http, formData, form, signUpResponse, setSignUpState }: SubmitSignUpFormType) => {
     setSignUpState({ ...signUpResponse, loading: true });

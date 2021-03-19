@@ -11,27 +11,37 @@ import AppMenuItem from './menu-item.atom'
 
 const appMenuItems = [
     {
-        name: 'Dashboard',
-        link: '/',
+        name: 'Schedule',
+        link: '/schedule',
         Icon: IconDashboard,
     },
     {
-        name: 'Orders',
-        link: '/orders',
+        name: 'groups',
+        link: '/groups',
+        Icon: IconDashboard,
+    },
+    {
+        name: 'Courses',
+        link: '/courses',
+        Icon: IconDashboard,
+    },
+    {
+        name: 'Attending',
+        link: '/attending',
         Icon: IconShoppingCart,
     },
     {
-        name: 'Customers',
-        link: '/customers',
+        name: 'Users',
+        link: '/users',
         Icon: IconPeople,
     },
     {
-        name: 'Reports',
-        link: '/reports',
+        name: 'lessons',
+        link: '/lessons',
         Icon: IconBarChart,
     },
     {
-        name: 'Nested Pages',
+        name: 'Homework',
         Icon: IconLibraryBooks,
         items: [
             {

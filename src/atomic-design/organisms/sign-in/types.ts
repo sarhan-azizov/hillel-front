@@ -11,10 +11,9 @@ export type TypeUserSignInFormFields = {
 export type SubmitSignInFormType = {
     http: ReqMethods;
     currentUserCtx: CurrentUserContextType;
-    history: History
+    history: History;
     formData: TypeUserSignInFormFields;
     form: any;
-    setLoading(loading: boolean): void
 }
 
 export type TypeSignInComponentAPI = {

@@ -3,7 +3,9 @@ import React from "react";
 
 const HomePage = () => {
   return (
-      <BoardTemplate title="Home Page" />
+      <BoardTemplate title="Home Page">
+        text
+      </BoardTemplate>
   );
 };
 

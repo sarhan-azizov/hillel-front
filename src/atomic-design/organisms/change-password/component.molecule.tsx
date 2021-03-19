@@ -5,11 +5,11 @@ import { Alert } from '@material-ui/lab';
 
 import styles from './component.module.scss';
 
-import { TypeChangePasswordComponentAPI } from './types';
+import { TypeChangePasswordComponentProps } from './types';
 import { TextField } from '../../atoms';
 import { validation } from './validation';
 
-const ChangePasswordComponent = (props: TypeChangePasswordComponentAPI) => (
+const ChangePasswordComponent = (props: TypeChangePasswordComponentProps) => (
     <form onSubmit={props.form.handleSubmit(props.onSubmit)} onChange={props.onChange} noValidate autoComplete="off" className={styles.form}>
         <TextField
             color="primary"

@@ -1,0 +1,1 @@
+export { UsersListContainer as UsersList } from './user-list.container';

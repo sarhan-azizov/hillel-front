@@ -1,0 +1,20 @@
+@import "../../../styles/variables";
+
+:global(.MuiTable-stickyHeader).table {
+  border-collapse: collapse;
+}
+
+.cell {
+  border: 1px solid #ccc;
+}
+
+:global(.MuiTableCell-stickyHeader).th {
+  background: $c-gunmetal;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid black;
+}
+
+:global(.MuiTableCell-head).th {
+  color: white;
+}

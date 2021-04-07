@@ -21,7 +21,7 @@ const onSubmit = async ({ http, currentUserCtx, history, formData, form }: Submi
 
     if(!signInResponse.error) {
         currentUserCtx.changeContext(getUserFromToken(signInResponse));
-        history.push(ROUTES.HOME);
+        history.push(ROUTES.DASHBOARD);
     } else {
         form.setError('form', signInResponse);
     }

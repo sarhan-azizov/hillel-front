@@ -4,6 +4,13 @@ import useFetch from "use-http";
 import { UsersListComponent } from './user-list.component';
 import { CurrentUserContext, CurrentUserContextType } from "../../atoms";
 
+const userParser = ({ password, ...user }:any) => ({
+    ...user,
+    createdAt: new Date(user.createdAt).toLocaleDateString(),
+    updatedAt: new Date(user.updatedAt).toLocaleDateString(),
+    activated: `${user.activated}`
+});
+
 const fetchUsersList = async (http:any, setUsers:any, pagination: any, filters:any) => {
     let url = `/users?page=${pagination.page + 1}&size=${pagination.perPage}`;
 
@@ -13,18 +20,13 @@ const fetchUsersList = async (http:any, setUsers:any, pagination: any, filters:a
 
     const usersResponse = await http.get(url);
 
-    usersResponse.result = usersResponse.result.map(({ password, ...item }:any ) => ({
-        ...item,
-        createdAt: new Date(item.createdAt).toLocaleDateString(),
-        updatedAt: new Date(item.updatedAt).toLocaleDateString(),
-        activated: `${item.activated}`
-    }))
+    usersResponse.result = usersResponse.result.map(userParser)
 
     setUsers(usersResponse);
 }
 
 const activeUser = async (http:any, username:string, activated:string, setUsers:any, users:any) => {
-    await http.patch(`/users/${username}`, {
+    const updatedUser = await http.patch(`/users/${username}`, {
         activated: activated === "true"
     });
 
@@ -35,7 +37,7 @@ const activeUser = async (http:any, username:string, activated:string, setUsers:
                 return user;
             }
 
-            return { ...user, activated }
+            return userParser(updatedUser)
         })
     })
 }
@@ -69,7 +71,7 @@ export const UsersListContainer = () => {
         });
     };
 
-    const handleActivate = (e:any) => {
+    const handleActivate = (e:any): void => {
         activeUser(http, e.target.dataset.userId, e.target.value, setUsers, users);
     };
 

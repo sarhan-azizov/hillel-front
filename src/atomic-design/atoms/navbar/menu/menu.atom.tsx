@@ -7,16 +7,22 @@ import IconPeople from '@material-ui/icons/People'
 import IconBarChart from '@material-ui/icons/BarChart'
 import IconLibraryBooks from '@material-ui/icons/LibraryBooks'
 
-import AppMenuItem from './menu-item.atom'
+import AppMenuItem from './menu-item.atom';
+import { ROUTES } from "../../../../configs";
 
 const appMenuItems = [
+    {
+        name: 'Dashboard',
+        link: ROUTES.DASHBOARD,
+        Icon: IconDashboard,
+    },
     {
         name: 'Schedule',
         link: '/schedule',
         Icon: IconDashboard,
     },
     {
-        name: 'groups',
+        name: 'Groups',
         link: '/groups',
         Icon: IconDashboard,
     },
@@ -32,7 +38,7 @@ const appMenuItems = [
     },
     {
         name: 'Users',
-        link: '/users',
+        link: ROUTES.USERS,
         Icon: IconPeople,
     },
     {

@@ -1,6 +1,6 @@
 import { CachePolicies } from "use-http";
 
-import { getTokenFromCookie } from '../helpers';
+import { getTokenFromCookie, removeTokenFromCookie } from '../helpers';
 
 export const HTTP_HOST = 'http://localhost:3000'
 export const HTTP_OPTIONS = {
@@ -11,6 +11,14 @@ export const HTTP_OPTIONS = {
             req.options.headers.Authorization = getTokenFromCookie();
 
             return req.options;
+        },
+        response: async ({ response }:any) => {
+            if (response.status === 401) {
+                removeTokenFromCookie();
+                window.location.replace("/sign-in");
+            }
+
+            return response;
         }
     }
 };

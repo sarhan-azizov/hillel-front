@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import AppMenu from './menu/menu.atom'
 import { Resizable } from '../resizable';
 import { removeTokenFromCookie } from '../../../helpers';
-import { CurrentUserContext } from '../../../atomic-design';
+import { CurrentUserContext } from '../with-current-user';
 import { ROUTES } from "../../../configs";
 
 export const defaultNavbarWidth = 340;

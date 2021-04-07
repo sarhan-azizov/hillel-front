@@ -1,12 +1,12 @@
 import { BoardTemplate } from '../templates';
 import React from "react";
 
-const HomePage = () => {
+const DashboardPage = () => {
   return (
-      <BoardTemplate title="Home Page">
+      <BoardTemplate title="Dashboard">
         text
       </BoardTemplate>
   );
 };
 
-export { HomePage };
+export { DashboardPage };

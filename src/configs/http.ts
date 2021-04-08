@@ -1,6 +1,7 @@
 import { CachePolicies } from "use-http";
 
 import { getTokenFromCookie, removeTokenFromCookie } from '../helpers';
+import { ROUTES } from "./constants";
 
 export const HTTP_HOST = 'http://localhost:3000'
 export const HTTP_OPTIONS = {
@@ -15,7 +16,11 @@ export const HTTP_OPTIONS = {
         response: async ({ response }:any) => {
             if (response.status === 401) {
                 removeTokenFromCookie();
-                window.location.replace("/sign-in");
+                window.location.replace(ROUTES.SIGN_IN);
+            }
+
+            if (response.status === 403) {
+                window.location.replace(ROUTES.FORBIDDEN);
             }
 
             return response;

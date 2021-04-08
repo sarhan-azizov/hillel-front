@@ -68,7 +68,7 @@ const MemoizedNavbar = React.memo(() => {
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
                     </Menu>
                     <Typography variant="body2">
-                        role: <span className={styles.role}>{userContext.user.role}</span>
+                        role: <span className={styles.role}>{userContext.user.role[0]?.name}</span>
                     </Typography>
                 </Grid>
             </Grid>

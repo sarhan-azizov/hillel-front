@@ -3,8 +3,9 @@ import useFetch from "use-http";
 
 import { UsersListComponent } from './user-list.component';
 import { CurrentUserContext, CurrentUserContextType } from "../../atoms";
+import { UserRolesContext } from "../../atoms/with-user-roles";
 
-const userParser = ({ password, ...user }:any) => ({
+const userParser = ({ _id, ...user }:any) => ({
     ...user,
     createdAt: new Date(user.createdAt).toLocaleDateString(),
     updatedAt: new Date(user.updatedAt).toLocaleDateString(),
@@ -25,9 +26,11 @@ const fetchUsersList = async (http:any, setUsers:any, pagination: any, filters:a
     setUsers(usersResponse);
 }
 
-const activeUser = async (http:any, username:string, activated:string, setUsers:any, users:any) => {
+const updateUser = async (http:any, username:string, field:string, value: string, setUsers:any, users:any) => {
+    const val = field === 'activated' ? value === 'true' : value;
+
     const updatedUser = await http.patch(`/users/${username}`, {
-        activated: activated === "true"
+        [field]: val
     });
 
     setUsers({
@@ -44,6 +47,7 @@ const activeUser = async (http:any, username:string, activated:string, setUsers:
 
 export const UsersListContainer = () => {
     const http = useFetch();
+    const userRolesCtx = useContext(UserRolesContext);
     const [pagination, setPagination] = useState({ page: 0, perPage: 10 });
     const [filters, setFilters] = useState({ activated: 'null' });
     const [users, setUsers] = useState({ result: [] });
@@ -71,23 +75,26 @@ export const UsersListContainer = () => {
         });
     };
 
-    const handleActivate = (e:any): void => {
-        activeUser(http, e.target.dataset.userId, e.target.value, setUsers, users);
+    const handleChangeUser = (e:any): void => {
+        const username = e.target.dataset.userId;
+        const field = e.target.dataset.field;
+        const newValue = e.target.value;
+
+        updateUser(http, username, field, newValue, setUsers, users);
     };
 
     useEffect(() => { fetchUsersList(http, setUsers, pagination, filters); }, [pagination, filters]);
 
-    const data = React.useMemo(() => users,[users]);
-
     return (
         <UsersListComponent
-            data={data}
+            data={users}
             pagination={pagination}
             filters={filters}
+            userRoles={userRolesCtx}
             onChange={handleChange}
             onFilter={handleFilter}
-            onActive={handleActivate}
-            isAdmin={currentUserCtx?.user.role === 'admin'}
+            onChangeUser={handleChangeUser}
+            isAdmin={currentUserCtx?.user.role[0]?.name === 'admin'}
             onChangeRowsPerPage={handleChangeRowsPerPage}
         />
     )

@@ -1,6 +1,6 @@
 export type UserType = {
     username?: string;
-    role?: string;
+    role?: any;
 }
 
 export type CurrentUserContextType = {

@@ -1,11 +1,14 @@
 import { BoardTemplate } from '../templates';
 import React from "react";
 import { UsersList } from "../../organisms";
+import { WithUserRoles } from "../../atoms/with-user-roles";
 
 const UsersPage = () => {
   return (
       <BoardTemplate title="Users">
-        <UsersList />
+          <WithUserRoles>
+              <UsersList />
+          </WithUserRoles>
       </BoardTemplate>
   );
 };

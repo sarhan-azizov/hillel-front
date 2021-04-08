@@ -75,16 +75,12 @@ function TablePaginationActions(props: any) {
 
 const columns = [
     {
-        header: '#',
-        accessor: '_id',
+        header: 'Username',
+        accessor: 'username',
     },
     {
         header: 'Created',
         accessor: 'createdAt',
-    },
-    {
-        header: 'Username',
-        accessor: 'username',
     },
     {
         header: 'First Name',
@@ -97,6 +93,10 @@ const columns = [
     {
         header: 'Activated',
         accessor: 'activated',
+    },
+    {
+        header: 'Role',
+        accessor: 'role',
     },
     {
         header: 'E-mail',
@@ -147,15 +147,26 @@ export const UsersListComponent = (props:any) => {
                 </TableHead>
                 <TableBody>
                     {users.map((row:any) => (
-                        <TableRow key={row._id}>
+                        <TableRow key={row.username}>
                             {columns.map((column:any, idx) => {
                                 let content = row[column.accessor]
 
                                 if (props.isAdmin && column.accessor === 'activated') {
                                     content = (
-                                        <select onChange={props.onActive} data-user-id={row.username} value={content}>
+                                        <select onChange={props.onChangeUser} data-user-id={row.username} data-field="activated" value={content}>
                                             <option value="true">true</option>
                                             <option  value="false">false</option>
+                                        </select>
+                                    )
+                                }
+
+                                if (props.isAdmin && column.accessor === 'role') {
+                                    content = (
+                                        <select onChange={props.onChangeUser} data-user-id={row.username} data-field="role" value={content[0]?._id}>
+                                            <option value="null">none</option>
+                                            {props.userRoles.map((userRole:any, idx:number) => (
+                                                <option key={idx+'userRoles'} value={userRole.id}>{userRole.name}</option>
+                                            ))}
                                         </select>
                                     )
                                 }

@@ -7,7 +7,7 @@ import { Provider } from 'use-http';
 import "./styles/main.scss";
 import AppRoutes from "./routes";
 import { customTheme } from './styles/theme';
-import { WithCurrentUser } from "./atomic-design/atoms";
+import { WithCurrentUser } from "./atomic-design";
 
 import { HTTP_HOST, HTTP_OPTIONS } from './configs';
 

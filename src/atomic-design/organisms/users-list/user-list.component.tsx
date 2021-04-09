@@ -28,19 +28,19 @@ function TablePaginationActions(props: any) {
     const { count, page, rowsPerPage, onChangePage } = props;
 
     const handleFirstPageButtonClick = (event: any) => {
-        onChangePage(event, 0);
+        onChangePage(event, 1);
     };
 
     const handleBackButtonClick = (event:any) => {
-        onChangePage(event, page - 1);
+        onChangePage(event, (page + 1) - 1);
     };
 
     const handleNextButtonClick = (event:any) => {
-        onChangePage(event, page + 1);
+        onChangePage(event, (page + 1) + 1);
     };
 
     const handleLastPageButtonClick = (event:any) => {
-        onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+        onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage)));
     };
 
     return (
@@ -133,7 +133,7 @@ export const UsersListComponent = (props:any) => {
 
                             if (column.header === 'Activated') {
                                 content = (
-                                    <select onChange={props.onFilter} value={props.filters.activated}>
+                                    <select onChange={props.onFilter} value={props.filterParams.activated}>
                                         <option value="null">Activated</option>
                                         <option  value="true">Only Activated</option>
                                         <option value="false">Not Activated</option>
@@ -186,8 +186,8 @@ export const UsersListComponent = (props:any) => {
                             rowsPerPageOptions={perPage}
                             colSpan={8}
                             count={usersCount}
-                            rowsPerPage={props.pagination.perPage}
-                            page={props.pagination.page}
+                            rowsPerPage={Number(props.filterParams.size)}
+                            page={Number(props.filterParams.page) - 1}
                             SelectProps={{
                                 inputProps: { 'aria-label': 'rows per page' },
                                 native: true,

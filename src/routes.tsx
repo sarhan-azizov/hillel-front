@@ -9,11 +9,11 @@ const Routes = () => (
     <Switch>
         <Route path={ROUTES.SIGN_IN} render={SignInPage} />
         <Route path={ROUTES.SIGN_UP} render={SignUpPage} />
-        <GuardedRoute path={ROUTES.USERS} isAuthorize component={UsersPage} />
+        <GuardedRoute path={`${ROUTES.USERS}`} isAuthorize component={UsersPage} />
         <GuardedRoute path={ROUTES.CHANGE_PASSWORD} isAuthorize component={ChangePasswordPage} />
         <Route path={ROUTES.NOT_AUTHORIZED} render={UnauthorizedPage} />
-        <GuardedRoute exact path={ROUTES.DASHBOARD} component={DashboardPage} isAuthorize />
-        <GuardedRoute exact path={ROUTES.FORBIDDEN} component={ForbiddenPage} isAuthorize />
+        <GuardedRoute path={ROUTES.DASHBOARD} component={DashboardPage} isAuthorize />
+        <GuardedRoute path={ROUTES.FORBIDDEN} component={ForbiddenPage} isAuthorize />
         <Route path="*" render={NotFoundPage} />
     </Switch>
 );

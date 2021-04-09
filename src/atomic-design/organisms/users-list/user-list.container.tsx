@@ -1,5 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import useFetch from "use-http";
+import { useHistory } from 'react-router';
+import { useLocation } from 'react-router-dom';
+
+import { queryParams } from '../../../helpers';
 
 import { UsersListComponent } from './user-list.component';
 import { CurrentUserContext, CurrentUserContextType } from "../../atoms";
@@ -12,11 +16,11 @@ const userParser = ({ _id, ...user }:any) => ({
     activated: `${user.activated}`
 });
 
-const fetchUsersList = async (http:any, setUsers:any, pagination: any, filters:any) => {
-    let url = `/users?page=${pagination.page + 1}&size=${pagination.perPage}`;
+const fetchUsersList = async (http:any, setUsers:any, filterParams:any) => {
+    let url = `/users?page=${filterParams.page}&size=${filterParams.size}`;
 
-    if(filters.activated !== 'null') {
-        url += `&activated=${filters.activated}`;
+    if(filterParams.activated !== 'null') {
+        url += `&activated=${filterParams.activated}`;
     }
 
     const usersResponse = await http.get(url);
@@ -25,6 +29,12 @@ const fetchUsersList = async (http:any, setUsers:any, pagination: any, filters:a
 
     setUsers(usersResponse);
 }
+
+const getFilterParams = (query: any) => ({
+    page: query.get('page') || 1,
+    size: query.get('size') || 10,
+    activated: query.get('activated') || 'null',
+});
 
 const updateUser = async (http:any, username:string, field:string, value: string, setUsers:any, users:any) => {
     const val = field === 'activated' ? value === 'true' : value;
@@ -47,32 +57,30 @@ const updateUser = async (http:any, username:string, field:string, value: string
 
 export const UsersListContainer = () => {
     const http = useFetch();
+    const query = queryParams(useLocation().search);
+    const history = useHistory();
     const userRolesCtx = useContext(UserRolesContext);
-    const [pagination, setPagination] = useState({ page: 0, perPage: 10 });
-    const [filters, setFilters] = useState({ activated: 'null' });
     const [users, setUsers] = useState({ result: [] });
     const currentUserCtx: CurrentUserContextType = useContext(CurrentUserContext);
 
+
     const handleChange = (e: any, page: number) => {
-        setPagination({
-            ...pagination,
-            page: Number(page)
-        });
+        query.set('page', String(page));
+
+        history.push({ search: query.toString() });
     };
 
     const handleChangeRowsPerPage = (e:any) => {
-        setPagination({
-            ...pagination,
-            page: 0,
-            perPage: Number(e.target.value)
-        });
+        query.set('page', String(1));
+        query.set('size', e.target.value);
+
+        history.push({ search: query.toString() });
     };
 
     const handleFilter = (e:any) => {
-        setFilters({
-            ...filters,
-            activated: e.target.value
-        });
+        query.set('page', String(1));
+        query.set('activated', e.target.value);
+        history.push({ search: query.toString() });
     };
 
     const handleChangeUser = (e:any): void => {
@@ -83,13 +91,25 @@ export const UsersListContainer = () => {
         updateUser(http, username, field, newValue, setUsers, users);
     };
 
-    useEffect(() => { fetchUsersList(http, setUsers, pagination, filters); }, [pagination, filters]);
+    const filterParams = getFilterParams(query);
+
+    useEffect(() => {
+        fetchUsersList(http, setUsers, filterParams);
+
+        const unregisterHistoryListener = history.listen((listener) => {
+            const query = queryParams(listener.search);
+            fetchUsersList(http, setUsers, getFilterParams(query));
+        });
+
+        return () => {
+            unregisterHistoryListener();
+        }
+    }, []);
 
     return (
         <UsersListComponent
             data={users}
-            pagination={pagination}
-            filters={filters}
+            filterParams={filterParams}
             userRoles={userRolesCtx}
             onChange={handleChange}
             onFilter={handleFilter}

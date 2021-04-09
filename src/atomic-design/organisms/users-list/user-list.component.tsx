@@ -131,7 +131,7 @@ export const UsersListComponent = (props:any) => {
                         {columns.map((column:any, idx: number) => {
                             let content = column.header;
 
-                            if (column.header === 'Activated') {
+                            if (props.isAdmin && column.header === 'Activated') {
                                 content = (
                                     <select onChange={props.onFilter} value={props.filterParams.activated}>
                                         <option value="null">Activated</option>
@@ -149,7 +149,7 @@ export const UsersListComponent = (props:any) => {
                     {users.map((row:any) => (
                         <TableRow key={row.username}>
                             {columns.map((column:any, idx) => {
-                                let content = row[column.accessor]
+                                let content = row[column.accessor];
 
                                 if (props.isAdmin && column.accessor === 'activated') {
                                     content = (

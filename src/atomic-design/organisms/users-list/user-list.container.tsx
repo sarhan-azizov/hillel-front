@@ -11,6 +11,7 @@ import { UserRolesContext } from "../../atoms/with-user-roles";
 
 const userParser = ({ _id, ...user }:any) => ({
     ...user,
+    role: user.role.length ? user.role[0].name : "null",
     createdAt: new Date(user.createdAt).toLocaleDateString(),
     updatedAt: new Date(user.updatedAt).toLocaleDateString(),
     activated: `${user.activated}`
@@ -25,7 +26,7 @@ const fetchUsersList = async (http:any, setUsers:any, filterParams:any) => {
 
     const usersResponse = await http.get(url);
 
-    usersResponse.result = usersResponse.result.map(userParser)
+    usersResponse.result = usersResponse.result.map(userParser);
 
     setUsers(usersResponse);
 }

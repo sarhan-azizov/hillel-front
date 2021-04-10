@@ -12,6 +12,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import styles from './users-list.module.scss';
 
@@ -105,6 +106,10 @@ const columns = [
     {
         header: 'Last Modified',
         accessor: 'updatedAt',
+    },
+    {
+        header: 'Actions',
+        accessor: 'actions',
     }
 ];
 
@@ -131,7 +136,7 @@ export const UsersListComponent = (props:any) => {
                         {columns.map((column:any, idx: number) => {
                             let content = column.header;
 
-                            if (props.isAdmin && column.header === 'Activated') {
+                            if (props.canEdit && column.header === 'Activated') {
                                 content = (
                                     <select onChange={props.onFilter} value={props.filterParams.activated}>
                                         <option value="null">Activated</option>
@@ -151,7 +156,17 @@ export const UsersListComponent = (props:any) => {
                             {columns.map((column:any, idx) => {
                                 let content = row[column.accessor];
 
-                                if (props.isAdmin && column.accessor === 'activated') {
+                                if (props.canEdit && column.accessor === 'actions') {
+                                    content = (
+                                        <div onClick={props.onDelete} data-user-id={row.username}>
+                                            <IconButton size="small" color="secondary">
+                                                <DeleteForeverIcon color="secondary" />
+                                            </IconButton>
+                                        </div>
+                                    );
+                                }
+
+                                if (props.canEdit && column.accessor === 'activated') {
                                     content = (
                                         <select onChange={props.onChangeUser} data-user-id={row.username} data-field="activated" value={content}>
                                             <option value="true">true</option>
@@ -160,7 +175,7 @@ export const UsersListComponent = (props:any) => {
                                     )
                                 }
 
-                                if (props.isAdmin && column.accessor === 'role') {
+                                if (props.canEdit && column.accessor === 'role') {
                                     content = (
                                         <select onChange={props.onChangeUser} data-user-id={row.username} data-field="role" value={content[0]?._id}>
                                             <option value="null">none</option>
@@ -184,7 +199,7 @@ export const UsersListComponent = (props:any) => {
                     <TableRow>
                         <TablePagination
                             rowsPerPageOptions={perPage}
-                            colSpan={8}
+                            colSpan={9}
                             count={usersCount}
                             rowsPerPage={Number(props.filterParams.size)}
                             page={Number(props.filterParams.page) - 1}

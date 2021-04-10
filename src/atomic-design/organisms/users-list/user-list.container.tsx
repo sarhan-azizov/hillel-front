@@ -56,6 +56,10 @@ const updateUser = async (http:any, username:string, field:string, value: string
     })
 }
 
+const deleteUser = async (http:any, username:string) => {
+    await http.delete(`/users/${username}`);
+}
+
 export const UsersListContainer = () => {
     const http = useFetch();
     const query = queryParams(useLocation().search);
@@ -63,7 +67,6 @@ export const UsersListContainer = () => {
     const userRolesCtx = useContext(UserRolesContext);
     const [users, setUsers] = useState({ result: [] });
     const currentUserCtx: CurrentUserContextType = useContext(CurrentUserContext);
-
 
     const handleChange = (e: any, page: number) => {
         query.set('page', String(page));
@@ -94,6 +97,14 @@ export const UsersListContainer = () => {
 
     const filterParams = getFilterParams(query);
 
+    const handleDeleteUser = async (e: any) => {
+        const username = e.currentTarget.dataset.userId;
+        const filterParams = getFilterParams(query);
+        await deleteUser(http, username);
+
+        fetchUsersList(http, setUsers, filterParams);
+    }
+
     useEffect(() => {
         fetchUsersList(http, setUsers, filterParams);
 
@@ -107,6 +118,8 @@ export const UsersListContainer = () => {
         }
     }, []);
 
+    const canEdit = ['admin', 'mentor'].includes(currentUserCtx?.user.role[0]?.name)
+
     return (
         <UsersListComponent
             data={users}
@@ -114,8 +127,9 @@ export const UsersListContainer = () => {
             userRoles={userRolesCtx}
             onChange={handleChange}
             onFilter={handleFilter}
+            onDelete={handleDeleteUser}
             onChangeUser={handleChangeUser}
-            isAdmin={currentUserCtx?.user.role[0]?.name === 'admin'}
+            canEdit={canEdit}
             onChangeRowsPerPage={handleChangeRowsPerPage}
         />
     )

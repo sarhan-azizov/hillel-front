@@ -6,6 +6,7 @@ import IconShoppingCart from '@material-ui/icons/ShoppingCart'
 import IconPeople from '@material-ui/icons/People'
 import IconBarChart from '@material-ui/icons/BarChart'
 import IconLibraryBooks from '@material-ui/icons/LibraryBooks'
+import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 
 import AppMenuItem from './menu-item.atom';
 import { ROUTES } from "../../../../configs";
@@ -16,26 +17,26 @@ const appMenuItems = [
         link: ROUTES.DASHBOARD,
         Icon: IconDashboard,
     },
-    {
-        name: 'Schedule',
-        link: '/schedule',
-        Icon: IconDashboard,
-    },
-    {
-        name: 'Groups',
-        link: '/groups',
-        Icon: IconDashboard,
-    },
-    {
-        name: 'Courses',
-        link: '/courses',
-        Icon: IconDashboard,
-    },
-    {
-        name: 'Attending',
-        link: '/attending',
-        Icon: IconShoppingCart,
-    },
+    // {
+    //     name: 'Schedule',
+    //     link: '/schedule',
+    //     Icon: IconDashboard,
+    // },
+    // {
+    //     name: 'Groups',
+    //     link: '/groups',
+    //     Icon: IconDashboard,
+    // },
+    // {
+    //     name: 'Courses',
+    //     link: '/courses',
+    //     Icon: IconDashboard,
+    // },
+    // {
+    //     name: 'Attending',
+    //     link: '/attending',
+    //     Icon: IconShoppingCart,
+    // },
     {
         name: 'Users',
         link: ROUTES.USERS,
@@ -44,28 +45,28 @@ const appMenuItems = [
     {
         name: 'lessons',
         link: '/lessons',
-        Icon: IconBarChart,
+        Icon: ImportContactsIcon,
     },
-    {
-        name: 'Homework',
-        Icon: IconLibraryBooks,
-        items: [
-            {
-                name: 'Level 2',
-            },
-            {
-                name: 'Level 2',
-                items: [
-                    {
-                        name: 'Level 3',
-                    },
-                    {
-                        name: 'Level 3',
-                    },
-                ],
-            },
-        ],
-    },
+    // {
+    //     name: 'Homework',
+    //     Icon: IconLibraryBooks,
+    //     items: [
+    //         {
+    //             name: 'Level 2',
+    //         },
+    //         {
+    //             name: 'Level 2',
+    //             items: [
+    //                 {
+    //                     name: 'Level 3',
+    //                 },
+    //                 {
+    //                     name: 'Level 3',
+    //                 },
+    //             ],
+    //         },
+    //     ],
+    // },
 ]
 
 const AppMenu = () => (

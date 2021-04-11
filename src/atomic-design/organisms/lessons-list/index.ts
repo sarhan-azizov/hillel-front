@@ -1,0 +1,1 @@
+export { LessonsListContainer as LessonsList } from './lessons-list.container';

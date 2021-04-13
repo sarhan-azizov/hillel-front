@@ -7,3 +7,4 @@ export { ChangePasswordPage } from "./change-password";
 export { UsersPage } from "./users";
 export { ForbiddenPage } from "./forbidden";
 export { LessonsPage } from "./lessons";
+export { CreateLessonPage } from "./create-lesson";

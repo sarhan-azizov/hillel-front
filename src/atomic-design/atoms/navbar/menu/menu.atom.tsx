@@ -43,9 +43,18 @@ const appMenuItems = [
         Icon: IconPeople,
     },
     {
-        name: 'lessons',
-        link: '/lessons',
+        name: 'Lessons',
         Icon: ImportContactsIcon,
+        items: [
+            {
+                name: 'Lessons',
+                link: ROUTES.LESSONS,
+            },
+            {
+                name: 'Create lesson',
+                link: `${ROUTES.LESSONS}${ROUTES.CREATE_LESSON}`,
+            },
+        ],
     },
     // {
     //     name: 'Homework',

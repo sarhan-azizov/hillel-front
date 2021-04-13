@@ -31,6 +31,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
           autoFocus={props.autoFocus}
           onFocus={handleFocus}
           inputRef={props.inputRef}
+          {...props}
       />
   );
 };

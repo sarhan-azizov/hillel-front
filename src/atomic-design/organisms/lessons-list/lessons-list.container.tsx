@@ -84,6 +84,12 @@ export const LessonsListContainer = () => {
         history.push({ search: query.toString() });
     };
 
+    const handleEditLesson = async (e: any) => {
+        const lessonId = e.currentTarget.dataset.lessonId;
+
+        history.push(`${history.location.pathname}/${lessonId}`);
+    }
+
     const handleChangeLesson = (e:any): void => {
         const lessonId = e.target.dataset.lessonId;
         const field = e.target.dataset.field;
@@ -107,7 +113,10 @@ export const LessonsListContainer = () => {
 
         const unregisterHistoryListener = history.listen((listener) => {
             const query = queryParams(listener.search);
-            fetchlessonsList(http, setLessons, getFilterParams(query));
+
+            if(listener.search) {
+                fetchlessonsList(http, setLessons, getFilterParams(query));
+            }
         });
 
         return () => {
@@ -123,6 +132,7 @@ export const LessonsListContainer = () => {
             filterParams={filterParams}
             onChange={handleChange}
             onFilter={handleFilter}
+            onEdit={handleEditLesson}
             onDelete={handleDeleteLesson}
             onChangeLesson={handleChangeLesson}
             canEdit={canEdit}

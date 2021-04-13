@@ -24,6 +24,7 @@ const Routes = () => (
     <GuardedRoute path={`${ROUTES.USERS}`} isAuthorize component={UsersPage} />
     <GuardedRoute exact path={`${ROUTES.LESSONS}`} isAuthorize component={LessonsPage} />
         <GuardedRoute path={`${ROUTES.LESSONS}${ROUTES.CREATE_LESSON}`} component={CreateLessonPage} />
+            <GuardedRoute path={`${ROUTES.LESSONS}/:lessonId`} component={CreateLessonPage} />
     <GuardedRoute path={ROUTES.CHANGE_PASSWORD} isAuthorize component={ChangePasswordPage} />
     <Route path={ROUTES.NOT_AUTHORIZED} render={UnauthorizedPage} />
     <GuardedRoute path={ROUTES.DASHBOARD} component={DashboardPage} isAuthorize />

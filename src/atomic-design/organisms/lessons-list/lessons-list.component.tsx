@@ -13,6 +13,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 
 import styles from './lessons-list.module.scss';
 
@@ -150,10 +151,17 @@ export const LessonsListComponent = (props:any) => {
 
                                 if (props.canEdit && column.accessor === 'actions') {
                                     content = (
-                                        <div onClick={props.onDelete} data-lesson-id={row._id}>
-                                            <IconButton size="small" color="secondary">
-                                                <DeleteForeverIcon color="secondary" />
-                                            </IconButton>
+                                        <div style={{ display: "flex" }}>
+                                            <div onClick={props.onEdit} data-lesson-id={row._id}>
+                                                <IconButton size="small">
+                                                    <EditOutlinedIcon />
+                                                </IconButton>
+                                            </div>
+                                            <div onClick={props.onDelete} data-lesson-id={row._id}>
+                                                <IconButton size="small" color="secondary">
+                                                    <DeleteForeverIcon color="secondary" />
+                                                </IconButton>
+                                            </div>
                                         </div>
                                     );
                                 }

@@ -7,11 +7,10 @@ import { FormControlLabel } from '@material-ui/core';
 
 import styles from './create-lesson.module.scss';
 
-import { TypeLessonComponentAPI } from './types';
 import { TextField, Checkbox } from '../../atoms';
 import { validation } from './validation';
 
-export const CreateLessonFormComponent = (props: TypeLessonComponentAPI) => (
+export const CreateLessonFormComponent = (props: any) => (
     <form onSubmit={props.form.handleSubmit(props.onSubmit)} onChange={props.onChange} noValidate autoComplete="off" className={styles.form}>
         <TextField
             error={Boolean(props.form.errors.name)}
@@ -28,7 +27,7 @@ export const CreateLessonFormComponent = (props: TypeLessonComponentAPI) => (
         />
         <TextField
             error={Boolean(props.form.errors.description)}
-            helperText={props.form.errors.firstName?.message}
+            helperText={props.form.errors.description?.message}
             multiline
             rows={4}
             color="primary"
@@ -45,11 +44,11 @@ export const CreateLessonFormComponent = (props: TypeLessonComponentAPI) => (
                 <Controller
                     label="Activated"
                     name="activated"
-                    defaultValue={true}
                     control={props.form.control}
-                    render={({ ref, ...field }: any) => <Checkbox {...field} {...props.form} />}
+                    render={(field: any) => <Checkbox {...field} {...props.form} />}
                 />
             }
+            name='activated'
             label="Activated"
         />
 
@@ -62,7 +61,7 @@ export const CreateLessonFormComponent = (props: TypeLessonComponentAPI) => (
                 variant="contained"
                 color="primary"
             >
-                Create Lesson
+                {props.isEdit ? 'Update Lesson' : 'Create Lesson'}
             </Button>
         </Box>
     </form>
